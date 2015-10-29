@@ -28,4 +28,3 @@ class WeatherBot(BotPlugin):
             return 'Please set an api key'
 
         return get_weather_for_location(args.strip(), api)
-
