@@ -15,10 +15,10 @@ Wind {wind_direction} {speed} m/s
 Pressure {pressure} hP
 """
 DATE_FMT = '%Y-%m-%d %H:%M:%S'
-def get_weather_for_location(location):
+def get_weather_for_location(location, api):
 
     try:
-        res = urllib.request.urlopen(WEATHER_URL + quote(location))
+        res = urllib.request.urlopen('{0}{1}&APPID={2}'.format(WEATHER_URL, quote(location), api))
         wm = loads(bytes.decode(res.read()))
         logging.debug(wm)
         p = {'location': wm['name'] + ', ' + wm['sys']['country'],
